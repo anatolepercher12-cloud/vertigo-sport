@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comment fonctionne le stock en ligne — Vertigo Sport</title>
+<meta name="description" content="Comment Vertigo Sport affiche ses stocks en ligne sans exposer son système de gestion : synchronisation sortante, hébergement en France ou dans l'UE, données protégées.">
+<link rel="canonical" href="https://anatolepercher12-cloud.github.io/vertigo-sport/fonctionnement.html">
+<meta property="og:title" content="Comment fonctionne le stock en ligne — Vertigo Sport">
+<meta property="og:description" content="Comment Vertigo Sport affiche ses stocks en ligne sans exposer son système de gestion : synchronisation sortante, hébergement en France ou dans l'UE, données protégées.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e3b43">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='10' fill='%23ff5b2e'/><path d='M6 30 16 12l5 8 4-5 9 15z' fill='%23fff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root="">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#ff5b2e"/><path d="M6 30 16 12l5 8 4-5 9 15z" fill="#fff"/></svg><span>Vertigo <em>Sport</em></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="main-nav" id="nav" aria-label="Navigation principale">
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="reservation.html">Location</a></li><li><a href="magasins.html">Magasins</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <a class="btn btn-primary btn-sm btn-account" href="compte.html">Se connecter</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap"><span class="kicker">Coulisses</span><h1>Comment fonctionne le stock en ligne</h1><p>Les prix et stocks de nos 6 magasins sont copiés vers le site toutes les 5 à 15 minutes, sans jamais ouvrir notre système de gestion à Internet.</p></div></section><section class="block"><div class="wrap">
+  <h2>Architecture</h2>
+  <div class="table-wrap archi-wrap"><svg class="archi" viewBox="0 0 1000 400" role="img" aria-labelledby="archi-t archi-d">
+  <title id="archi-t">Schéma d'architecture du site Vertigo Sport</title>
+  <desc id="archi-d">Les internautes accèdent en HTTPS, à travers un pare-feu applicatif, au serveur web hébergé en France ou dans l'UE, qui lit sa propre base de données. Dans le réseau interne de Vertigo Sport, GESTOCK reste derrière le pare-feu ; un script de synchronisation envoie les prix et stocks vers la base du site toutes les 5 à 15 minutes. Aucune connexion n'entre dans le réseau interne depuis Internet.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="ah"/></marker>
+    <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="ah2"/></marker>
+  </defs>
+  <rect class="zone-net" x="8" y="20" width="572" height="300" rx="16"/>
+  <text class="zl" x="26" y="48">INTERNET</text>
+  <rect class="zone-host" x="160" y="70" width="404" height="200" rx="12"/>
+  <text class="zl2" x="176" y="94">Hébergeur (VPS / cloud en France ou UE)</text>
+  <rect class="zone-int" x="636" y="20" width="356" height="300" rx="16"/>
+  <text class="zl" x="654" y="48">RÉSEAU INTERNE VERTIGO SPORT</text>
+  <g class="fw"><rect x="596" y="20" width="24" height="300" rx="4"/><text x="608" y="340" text-anchor="middle" class="s">Pare-feu</text></g>
+  <g class="node"><rect x="24" y="145" width="116" height="64" rx="10"/><text x="82.0" y="173.0" text-anchor="middle" class="t">Internautes</text><text x="82.0" y="191.0" text-anchor="middle" class="s">mobile, ordinateur</text></g>
+  <g class="node"><rect x="176" y="145" width="108" height="64" rx="10"/><text x="230.0" y="173.0" text-anchor="middle" class="t">HTTPS + WAF</text><text x="230.0" y="191.0" text-anchor="middle" class="s">TLS, OWASP</text></g>
+  <g class="node"><rect x="310" y="145" width="104" height="64" rx="10"/><text x="362.0" y="173.0" text-anchor="middle" class="t">Serveur web</text><text x="362.0" y="191.0" text-anchor="middle" class="s">site + admin 2FA</text></g>
+  <g class="node"><rect x="440" y="145" width="112" height="64" rx="10"/><text x="496.0" y="173.0" text-anchor="middle" class="t">Base du site</text><text x="496.0" y="191.0" text-anchor="middle" class="s">copie lecture seule</text></g>
+  <g class="node sync"><rect x="656" y="145" width="136" height="64" rx="10"/><text x="724.0" y="173.0" text-anchor="middle" class="t">Script de synchro</text><text x="724.0" y="191.0" text-anchor="middle" class="s">lecture seule</text></g>
+  <g class="node core"><rect x="824" y="145" width="150" height="64" rx="10"/><text x="899.0" y="173.0" text-anchor="middle" class="t">GESTOCK</text><text x="899.0" y="191.0" text-anchor="middle" class="s">prix et stocks</text></g>
+  <path class="flow" d="M140 177h34" marker-end="url(#ah)"/>
+  <path class="flow" d="M284 177h24" marker-end="url(#ah)"/>
+  <path class="flow" d="M414 177h24" marker-end="url(#ah)"/>
+  <path class="flow sync" d="M824 177h-30"  marker-end="url(#ah2)"/>
+  <path class="flow sync" d="M724 209v70H500v-68" marker-end="url(#ah2)"/>
+  <text class="lbl sync-t" x="814" y="302" text-anchor="middle">Envoi sortant toutes les 5 à 15 min</text>
+  <text class="lbl" x="460" y="124" text-anchor="middle">Le site ne lit que sa propre base</text>
+  <g class="deny"><path d="M82 376h818"/><path class="x" d="M598 366l20 20M618 366l-20 20"/><text x="400" y="368" text-anchor="middle" class="lbl">Aucune connexion entrante depuis Internet vers GESTOCK</text></g>
+</svg></div>
+  <ul class="legend">
+    <li><span class="key k-flow"></span>Consultation du site par les internautes (HTTPS)</li>
+    <li><span class="key k-sync"></span>Flux unique de synchronisation, du réseau interne vers le site</li>
+    <li><span class="key k-fw"></span>Pare-feu du réseau interne : aucun port ouvert vers GESTOCK</li>
+    <li><span class="key k-deny"></span>Connexion interdite</li>
+  </ul>
+  <div class="grid grid-2" style="margin-top:32px">
+    <div class="card"><h3>Pourquoi du « quasi temps réel » ?</h3>
+      <p class="muted">Un décalage de quelques minutes suffit pour savoir si un article est disponible avant de se déplacer. Un vrai temps réel demanderait de relier le site directement à GESTOCK, ce qui coûterait beaucoup plus cher et exposerait le système de gestion de l'entreprise.</p></div>
+    <div class="card"><h3>Sécurité</h3>
+      <ul class="muted" style="margin:0;padding-left:1.2em">
+        <li>Hébergement en France ou dans l'UE (simplifie le RGPD)</li>
+        <li>HTTPS obligatoire (certificat TLS)</li>
+        <li>Mots de passe clients hachés (bcrypt ou Argon2)</li>
+        <li>Sauvegardes automatiques, règle 3-2-1</li>
+        <li>Mises à jour régulières du site et de ses extensions</li>
+        <li>Pare-feu applicatif (WAF) contre l'injection SQL et le XSS (OWASP)</li>
+        <li>Administration protégée : mot de passe fort et double authentification</li>
+      </ul></div>
+  </div>
+  <h2 style="margin-top:40px">Modèle de données</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Table</th><th>Contenu principal</th><th>Origine</th></tr></thead>
+    <tbody>
+      <tr><td>Produit</td><td>référence, nom, catégorie, description, photo</td><td>Synchronisation GESTOCK</td></tr>
+      <tr><td>Magasin</td><td>nom, ville, adresse, horaires</td><td>Saisi par Vertigo Sport</td></tr>
+      <tr><td>Stock</td><td>produit, magasin, quantité, prix, date de mise à jour</td><td>Synchronisation GESTOCK</td></tr>
+      <tr><td>Client</td><td>nom, e-mail, mot de passe haché, date de consentement</td><td>Création de compte</td></tr>
+      <tr><td>Favori</td><td>client, produit</td><td>Espace client</td></tr>
+      <tr><td>Réservation</td><td>client, produit, magasin, dates de location, statut</td><td>Module de location</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid grid-4">
+      <div>
+        <a class="logo" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#ff5b2e"/><path d="M6 30 16 12l5 8 4-5 9 15z" fill="#fff"/></svg><span>Vertigo <em>Sport</em></span></a>
+        <p style="margin-top:12px">Le sport outdoor en Pays de la Loire : 6 magasins, des conseils de passionnés et du matériel à louer.</p>
+      </div>
+      <div><h3>Nos magasins</h3><ul><li><a href="magasins/nantes.html">Vertigo Sport Nantes</a></li><li><a href="magasins/angers.html">Vertigo Sport Angers</a></li><li><a href="magasins/le-mans.html">Vertigo Sport Le Mans</a></li><li><a href="magasins/saint-nazaire.html">Vertigo Sport Saint-Nazaire</a></li><li><a href="magasins/la-roche-sur-yon.html">Vertigo Sport La Roche-sur-Yon</a></li><li><a href="magasins/laval.html">Vertigo Sport Laval</a></li></ul></div>
+      <div><h3>Services</h3><ul>
+        <li><a href="catalogue.html">Stock en temps réel</a></li>
+        <li><a href="reservation.html">Location de matériel</a></li>
+        <li><a href="compte.html">Espace client</a></li>
+        <li><a href="blog.html">Conseils &amp; actualités</a></li>
+        <li><a href="fonctionnement.html">Comment fonctionne le stock en ligne</a></li>
+      </ul></div>
+      <div><h3>Informations</h3><ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+        <li><button class="linklike" type="button" data-cookies>Gérer les cookies</button></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Vertigo Sport — Site réalisé par DigitalCraft</span>
+      <span>Paiement des locations en magasin uniquement</span>
+    </div>
+  </div>
+</footer>
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="ck-title" hidden>
+  <h2 id="ck-title">Vos choix sur les cookies</h2>
+  <p>Nous utilisons des cookies nécessaires au fonctionnement du site (compte, magasin préféré). Avec votre accord, nous mesurons aussi l'audience de façon anonyme. Vous pouvez changer d'avis à tout moment depuis le pied de page. <a href="confidentialite.html#cookies">En savoir plus</a></p>
+  <div class="cookie-prefs" id="ck-prefs" hidden>
+    <label class="check"><input type="checkbox" checked disabled> <span><strong>Nécessaires</strong> — toujours actifs</span></label>
+    <label class="check"><input type="checkbox" id="ck-mesure"> <span><strong>Mesure d'audience</strong> — statistiques anonymes</span></label>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn btn-ghost" id="ck-refuse" type="button">Tout refuser</button>
+    <button class="btn btn-primary" id="ck-accept" type="button">Tout accepter</button>
+    <button class="btn btn-ghost" id="ck-custom" type="button">Personnaliser</button>
+    <button class="btn btn-primary" id="ck-save" type="button" hidden>Enregistrer mes choix</button>
+  </div>
+</div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

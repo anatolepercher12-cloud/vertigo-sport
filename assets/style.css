@@ -198,3 +198,35 @@ form .grid { gap: 16px; }
 .cookie-actions .btn { flex: 1 1 140px; }
 .cookie-prefs { margin: 12px 0; display: grid; gap: 10px; }
 [hidden] { display: none !important; }
+
+/* Schéma d'architecture */
+.archi-wrap { padding: 16px; }
+.archi { display: block; width: 100%; min-width: 760px; height: auto; font-family: var(--font); }
+.archi .zone-net { fill: #eef5f4; stroke: #b9d3cf; }
+.archi .zone-host { fill: #fff; stroke: var(--brand-2); stroke-dasharray: 6 5; }
+.archi .zone-int { fill: #fbf3ea; stroke: #e6cdb2; }
+.archi .zl { font-size: 13px; font-weight: 700; letter-spacing: .1em; fill: var(--ink-soft); }
+.archi .zl2 { font-size: 12px; fill: var(--brand-2); font-weight: 600; }
+.archi .node rect { fill: #fff; stroke: var(--brand); stroke-width: 1.5; }
+.archi .node.sync rect { stroke: var(--accent); }
+.archi .node.core rect { fill: var(--brand); }
+.archi .node.core .t, .archi .node.core .s { fill: #fff; }
+.archi .t { font-size: 14px; font-weight: 700; fill: var(--ink); }
+.archi .s { font-size: 11.5px; fill: var(--ink-soft); }
+.archi .fw rect { fill: var(--ko); opacity: .85; }
+.archi .flow { fill: none; stroke: var(--brand); stroke-width: 2.5; }
+.archi .flow.sync { stroke: var(--accent); stroke-width: 3; }
+.archi .ah { fill: var(--brand); }
+.archi .ah2 { fill: var(--accent); }
+.archi .lbl { font-size: 12.5px; fill: var(--ink-soft); }
+.archi .sync-t { fill: var(--accent-ink); font-weight: 600; }
+.archi .deny path { stroke: var(--ko); stroke-width: 2.5; stroke-dasharray: 8 6; }
+.archi .deny .lbl { fill: var(--ko); font-weight: 600; }
+.legend { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: .9rem; color: var(--ink-soft); }
+.legend li { display: flex; align-items: center; gap: 8px; }
+.legend .key { width: 28px; height: 0; border-top: 3px solid; flex: none; }
+.legend .k-flow { border-color: var(--brand); }
+.legend .k-sync { border-color: var(--accent); }
+.legend .k-fw { height: 14px; width: 10px; border: 0; background: var(--ko); border-radius: 2px; }
+.legend .k-deny { border-top-style: dashed; border-color: var(--ko); }
+.archi .deny .x { stroke-dasharray: none; stroke-width: 4; }

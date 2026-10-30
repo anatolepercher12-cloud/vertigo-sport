@@ -10,6 +10,8 @@
 <meta property="og:description" content="Créez votre compte Vertigo Sport pour enregistrer vos favoris, choisir votre magasin et suivre vos réservations de matériel.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0e3b43">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='10' fill='%23ff5b2e'/><path d='M6 30 16 12l5 8 4-5 9 15z' fill='%23fff'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +69,7 @@
       <div class="card"><h3>Mes favoris</h3><p class="muted small">Disponibilité dans votre magasin préféré</p><ul class="list-plain" id="acc-favs"></ul></div>
       <div class="card"><h3>Mes réservations</h3><ul class="list-plain" id="acc-resa"></ul></div>
       <div class="card"><h3>Mes informations</h3>
-        <dl class="store"><dt class="muted">E-mail</dt><dd id="acc-email"></dd><dt class="muted">Magasin préféré</dt><dd id="acc-mag"></dd></dl>
+        <dl class="store"><dt class="muted">E-mail</dt><dd id="acc-email"></dd><dt class="muted">Magasin préféré</dt><dd id="acc-mag"></dd><dt class="muted">Consentement</dt><dd id="acc-consent"></dd></dl>
       </div>
       <div class="card"><h3>Mes données personnelles</h3>
         <p class="muted">Vous pouvez supprimer définitivement votre compte, vos favoris et vos réservations.</p>
@@ -95,6 +97,7 @@
         <li><a href="reservation.html">Location de matériel</a></li>
         <li><a href="compte.html">Espace client</a></li>
         <li><a href="blog.html">Conseils &amp; actualités</a></li>
+        <li><a href="fonctionnement.html">Comment fonctionne le stock en ligne</a></li>
       </ul></div>
       <div><h3>Informations</h3><ul>
         <li><a href="contact.html">Contact</a></li>
