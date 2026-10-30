@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Espace client — Vertigo Sport</title>
+<meta name="description" content="Créez votre compte Vertigo Sport pour enregistrer vos favoris, choisir votre magasin et suivre vos réservations de matériel.">
+<link rel="canonical" href="https://vertigo-sport.fr/compte.html">
+<meta property="og:title" content="Espace client — Vertigo Sport">
+<meta property="og:description" content="Créez votre compte Vertigo Sport pour enregistrer vos favoris, choisir votre magasin et suivre vos réservations de matériel.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0e3b43">
+<link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'><rect width='40' height='40' rx='10' fill='%23ff5b2e'/><path d='M6 30 16 12l5 8 4-5 9 15z' fill='%23fff'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-root="">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#ff5b2e"/><path d="M6 30 16 12l5 8 4-5 9 15z" fill="#fff"/></svg><span>Vertigo <em>Sport</em></span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="main-nav" id="nav" aria-label="Navigation principale">
+      <ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="reservation.html">Location</a></li><li><a href="magasins.html">Magasins</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <a class="btn btn-primary btn-sm btn-account" href="compte.html">Se connecter</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="wrap"><span class="kicker">Espace client</span><h1>Mon compte</h1><p>Favoris, magasin préféré et réservations de location réunis au même endroit.</p></div></section><section class="block"><div class="wrap" id="account">
+  <div id="auth">
+    <div id="login-msg" role="status" hidden></div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="signup" aria-selected="true">Créer un compte</button>
+      <button type="button" role="tab" data-tab="login" aria-selected="false">J'ai déjà un compte</button>
+    </div>
+    <form id="signup-form" class="card" novalidate>
+      <div class="grid grid-2">
+        <div class="field"><label for="su-nom">Prénom et nom</label><input id="su-nom" name="nom" autocomplete="name" required></div>
+        <div class="field"><label for="su-email">E-mail</label><input id="su-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="su-pass">Mot de passe (8 caractères minimum)</label><input id="su-pass" name="pass" type="password" minlength="8" autocomplete="new-password" required></div>
+        <div class="field"><label for="su-mag">Magasin préféré</label><select id="su-mag" name="magasin"></select></div>
+      </div>
+      <div style="display:grid;gap:10px;margin:16px 0">
+        <label class="check"><input type="checkbox" name="cgu" required> <span>J'ai lu la <a href="confidentialite.html">politique de confidentialité</a> et j'accepte la création de mon compte.</span></label>
+        <label class="check"><input type="checkbox" name="marketing"> <span>J'accepte de recevoir les offres et actualités de Vertigo Sport par e-mail (facultatif, désinscription à tout moment).</span></label>
+      </div>
+      <p class="notice">Nous ne collectons que les données utiles à votre compte et à vos réservations. Votre mot de passe est chiffré. Les comptes inactifs depuis 3 ans sont supprimés automatiquement.</p>
+      <button class="btn btn-primary" type="submit">Créer mon compte</button>
+    </form>
+    <form id="login-form" class="card" novalidate hidden>
+      <div class="grid grid-2">
+        <div class="field"><label for="li-email">E-mail</label><input id="li-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="li-pass">Mot de passe</label><input id="li-pass" name="pass" type="password" autocomplete="current-password" required></div>
+      </div>
+      <button class="btn btn-primary" type="submit" style="margin-top:16px">Se connecter</button>
+    </form>
+  </div>
+  <div id="dashboard" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+      <h2 id="hello" style="margin:0"></h2>
+      <button class="btn btn-ghost btn-sm" id="logout" type="button">Se déconnecter</button>
+    </div>
+    <div class="grid grid-2">
+      <div class="card"><h3>Mes favoris</h3><p class="muted small">Disponibilité dans votre magasin préféré</p><ul class="list-plain" id="acc-favs"></ul></div>
+      <div class="card"><h3>Mes réservations</h3><ul class="list-plain" id="acc-resa"></ul></div>
+      <div class="card"><h3>Mes informations</h3>
+        <dl class="store"><dt class="muted">E-mail</dt><dd id="acc-email"></dd><dt class="muted">Magasin préféré</dt><dd id="acc-mag"></dd></dl>
+      </div>
+      <div class="card"><h3>Mes données personnelles</h3>
+        <p class="muted">Vous pouvez supprimer définitivement votre compte, vos favoris et vos réservations.</p>
+        <button class="btn btn-ghost" id="delete" type="button" style="color:var(--ko)">Supprimer mon compte</button>
+        <div id="delete-confirm" hidden>
+          <p><strong>Confirmer la suppression définitive ?</strong></p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" id="delete-yes" type="button" style="background:var(--ko)">Oui, supprimer</button><button class="btn btn-ghost" id="delete-no" type="button">Annuler</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="muted small" style="margin-top:20px">Version de démonstration : le compte est enregistré uniquement dans ce navigateur.</p>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid grid-4">
+      <div>
+        <a class="logo" href="index.html"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#ff5b2e"/><path d="M6 30 16 12l5 8 4-5 9 15z" fill="#fff"/></svg><span>Vertigo <em>Sport</em></span></a>
+        <p style="margin-top:12px">Le sport outdoor en Pays de la Loire : 6 magasins, des conseils de passionnés et du matériel à louer.</p>
+      </div>
+      <div><h3>Nos magasins</h3><ul><li><a href="magasins/nantes.html">Vertigo Sport Nantes</a></li><li><a href="magasins/angers.html">Vertigo Sport Angers</a></li><li><a href="magasins/le-mans.html">Vertigo Sport Le Mans</a></li><li><a href="magasins/saint-nazaire.html">Vertigo Sport Saint-Nazaire</a></li><li><a href="magasins/la-roche-sur-yon.html">Vertigo Sport La Roche-sur-Yon</a></li><li><a href="magasins/laval.html">Vertigo Sport Laval</a></li></ul></div>
+      <div><h3>Services</h3><ul>
+        <li><a href="catalogue.html">Stock en temps réel</a></li>
+        <li><a href="reservation.html">Location de matériel</a></li>
+        <li><a href="compte.html">Espace client</a></li>
+        <li><a href="blog.html">Conseils &amp; actualités</a></li>
+      </ul></div>
+      <div><h3>Informations</h3><ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+        <li><button class="linklike" type="button" data-cookies>Gérer les cookies</button></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Vertigo Sport — Site réalisé par DigitalCraft</span>
+      <span>Paiement des locations en magasin uniquement</span>
+    </div>
+  </div>
+</footer>
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-labelledby="ck-title" hidden>
+  <h2 id="ck-title">Vos choix sur les cookies</h2>
+  <p>Nous utilisons des cookies nécessaires au fonctionnement du site (compte, magasin préféré). Avec votre accord, nous mesurons aussi l'audience de façon anonyme. Vous pouvez changer d'avis à tout moment depuis le pied de page. <a href="confidentialite.html#cookies">En savoir plus</a></p>
+  <div class="cookie-prefs" id="ck-prefs" hidden>
+    <label class="check"><input type="checkbox" checked disabled> <span><strong>Nécessaires</strong> — toujours actifs</span></label>
+    <label class="check"><input type="checkbox" id="ck-mesure"> <span><strong>Mesure d'audience</strong> — statistiques anonymes</span></label>
+  </div>
+  <div class="cookie-actions">
+    <button class="btn btn-ghost" id="ck-refuse" type="button">Tout refuser</button>
+    <button class="btn btn-primary" id="ck-accept" type="button">Tout accepter</button>
+    <button class="btn btn-ghost" id="ck-custom" type="button">Personnaliser</button>
+    <button class="btn btn-primary" id="ck-save" type="button" hidden>Enregistrer mes choix</button>
+  </div>
+</div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
